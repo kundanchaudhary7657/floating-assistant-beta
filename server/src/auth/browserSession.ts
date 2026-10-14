@@ -30,7 +30,7 @@ export function createBrowserSessionCookie(token: string, options: BrowserCookie
     'Path=/',
     `Max-Age=${Math.max(1, Math.floor(options.maxAgeSeconds))}`,
     'HttpOnly',
-    options.production ? 'SameSite=None' : 'SameSite=Lax',
+    'SameSite=Lax',
 ...(options.production ? ['Secure'] : []),
   ].join('; ')
 }
@@ -42,7 +42,7 @@ export function clearBrowserSessionCookie(production: boolean) {
     'Max-Age=0',
     'Expires=Thu, 01 Jan 1970 00:00:00 GMT',
     'HttpOnly',
-    production ? 'SameSite=None' : 'SameSite=Lax',
+    'SameSite=Lax',
 ...(production ? ['Secure'] : []),
   ].join('; ')
 }
